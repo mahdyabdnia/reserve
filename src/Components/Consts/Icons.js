@@ -7,6 +7,14 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import HelpIcon from '@mui/icons-material/Help';
 import classNames from 'classnames';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DiningIcon from '@mui/icons-material/Dining';
+import DiningOutlinedIcon from '@mui/icons-material/DiningOutlined';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
+import ScreenSearchDesktopRoundedIcon from '@mui/icons-material/ScreenSearchDesktopRounded';
+import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined';
 
 export function Menu({className}){
     return (<>
@@ -61,4 +69,69 @@ export function QuestIcon({className}){
     return(<>
     <HelpIcon className={className}/>
     </>)
+}
+
+export function EyesIcon({className}){
+
+    return(
+        <>
+        <VisibilityOutlinedIcon className={className}/>
+        </>
+    )
+}
+
+export function EditIcon({className}){
+
+    return(
+        <>
+        <EditOutlinedIcon className={className}/>
+        </>
+    )
+}
+
+export function Spoon({className}){
+    return(<>
+    <DiningIcon className={className}/>
+    </>)
+}
+
+export function SpoonOut({className}){
+    return(
+        <>
+        <DiningOutlinedIcon className={className}/>
+        </>
+    )
+}
+
+export function Security({className}){
+    return(
+        <>
+        <AdminPanelSettingsIcon className={className}/>
+        </>
+    )
+}
+
+
+export function SecurityOut({className}){
+    return(
+        <>
+        <AdminPanelSettingsOutlinedIcon className={className}/>
+        </>
+    )
+}
+
+export function SearchSite({className}){
+    return(
+        <>
+        <ScreenSearchDesktopRoundedIcon className={className}/>
+        </>
+    )
+}
+
+export function SearchSiteOut({className}){
+    return(
+        <>
+        <ScreenSearchDesktopOutlinedIcon className={className}/>
+        </>
+    )
 }

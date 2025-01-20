@@ -4,14 +4,14 @@ import ShareIcon from '@mui/icons-material/Share'
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'; 
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-
+import SortIcon from '@mui/icons-material/Sort';
 import ReportOutlinedIcon from '@mui/icons-material/ReportOutlined';
 import GppMaybeOutlinedIcon from '@mui/icons-material/GppMaybeOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import PhotoSizeSelectActualOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActualOutlined';
 import TwoWheelerOutlinedIcon from '@mui/icons-material/TwoWheelerOutlined';
 import EventSeatOutlinedIcon from '@mui/icons-material/EventSeatOutlined';
- 
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import TvIcon from '@mui/icons-material/Tv';
 import MovieIcon from '@mui/icons-material/Movie';
 import DevicesIcon from '@mui/icons-material/Devices';
@@ -49,8 +49,17 @@ import RemoveIcon from '@mui/icons-material/Remove';
  import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
  import VolumeUpIcon from '@mui/icons-material/VolumeUp';
  import { MessageCircle ,Send} from 'react-feather';
-
+ import StoreOutlinedIcon from '@mui/icons-material/StoreOutlined';
+ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+ import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
+ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+ import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import TocIcon from '@mui/icons-material/Toc';
+import CheckIcon from '@mui/icons-material/Check';
+import StarRateIcon from '@mui/icons-material/StarRate';
+ 
+
 export function Report ({className}){
   return(<>
   <ReportOutlinedIcon className={className}/>
@@ -222,6 +231,12 @@ export function LikeOn({className}){
   )
 }
 
+export function Store({className}){
+  return(<>
+  <StoreOutlinedIcon className={className}/>
+  </>)
+}
+
 export function AddToList({className}){
   return(
     <>
@@ -236,7 +251,7 @@ export function Compare({className}){
   </>)
 }
 
-export function Store({className}){
+export function StoreIcon({className}){
 
 
   return(<>
@@ -391,3 +406,82 @@ export function Remove({className}){
 }
 
 
+export function Shipp({className}){
+  return(<>
+    
+    <LocalShippingIcon className={className}/>
+    
+    </>)
+}
+
+
+export function AddToListIcon({className}){
+
+  return(<>
+  <PlaylistAddIcon className={className}/>
+  </>)
+}
+
+
+export function LikeFinger({className}){
+
+  return (<>
+     <ThumbUpOutlinedIcon className={className}/>
+    
+    </>)
+}
+
+export function DislikeFinger({className}){
+  return(<>
+    <ThumbDownOffAltOutlinedIcon className={className}/>
+  </>)
+}
+
+export function Sort({className}){
+  return(<>
+    <SortIcon className={className}/>
+  </>)
+}
+
+
+export function QuestIcon({className}){
+  return(
+    <>
+    <HelpOutlineIcon className={className}/>
+    </>
+  )
+}
+
+export function SupportResponse({className}){
+  return(
+    <>
+    <SupportAgentIcon className={className}/>
+    </>
+  )
+}
+
+export function NoIcon({className}){
+return(
+  <>
+  <CloseIcon className={className}/>
+  </>
+)
+
+}
+
+export function YesIcon({className}){
+  return(
+    <>
+    <CheckIcon className={className}/>
+    </>
+  )
+}
+
+
+export function StarIcon({className}){
+  return(
+    <>
+    <StarRateIcon className={className}/>
+    </>
+  )
+}

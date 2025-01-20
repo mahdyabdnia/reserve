@@ -2,6 +2,8 @@ import React,{useRef} from 'react'
 import useStyles from './styles'
 import { Divider } from '@mui/material'
 import { Down } from '../Icons/Icons'
+import {muiDivider} from '@mui/material'
+import QuickBox from './QuickBox/QuickBox'
 export default function Home() {
   const notifRef = useRef(null)
   const notifBoxRef=useRef(null)
@@ -17,17 +19,10 @@ export default function Home() {
    }
   }
   return (
-    <div className={classes.root}>
-      <div className={classes.notif_box} ref={notifBoxRef}>
-        <h3 className={classes.h3} ><span>اطلاعیه‌ها</span> <span onClick={handleOpenClose}><Down/></span></h3>
-      
-       <ul className={classes.notif_list} ref={notifRef}>
-        <li className={classes.notif_list_item}>اطلاعیه </li>
-        <li className={classes.notif_list_item}>اطلاعیه </li>
-        <li className={classes.notif_list_item}>اطلاعیه </li>
-        <li className={classes.notif_list_item}>اطلاعیه </li>
-       </ul>
-      </div>
+    <div className={classes.root}> 
+    <h2 className={classes.header}>دسترسی سریع</h2>
+   
+       <QuickBox/>
     </div>
   )
 }

@@ -7,7 +7,7 @@ export default function Layout() {
     const classes=useStyles();
     const location=useLocation()
   return (
-    <div className={classes.layout_root} style={{backgroundSize:'100vh',backgroundImage:`url(${"images/background.jpg"})`,}}>
+    <div className={classes.layout_root} >
     {location.pathname!=="/login" && <Navbar/>}   
       <Outlet />
      

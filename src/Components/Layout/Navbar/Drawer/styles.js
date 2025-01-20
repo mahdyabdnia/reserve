@@ -1,94 +1,46 @@
 import { makeStyles } from "@mui/styles";
 
 const useStyles=makeStyles({
-    drawer_root:{
-        display:'flex',
+    drawer_background:{
         position:'fixed',
-        flexDirection:'column',
-       
-        width:'0%',
+        display:'none',
+        width:'100%',
         height:'100%',
-        overflow:'hidden',
+        zIndex:'200',
         top:'0',
         bottom:'0',
-        zIndex:'1',
+        left:'0',
+        right:'0',
+        backgroundColor:'rgba(0,0,0,0.5)',
+        transition:'display 4s'
+    },
+    drawer_root:{
+        display:'flex',
+        top:'0',
+        bottom:'0',
+        flexDirection:'column',
         backgroundColor:'white',
+        height:'100%',
+        width:'0%',
+        position:'fixed',
         boxSizing:'border-box',
-        border:'1px solid black',
-         
+        padding:'1vh 0vw',
+        left:'0',
+      transition:'1s'
+        
+        
+
+
+    },
+    drawer_header_box:{
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        padding:'1vh 1vw',
        
-        
-        transition:' 1s',
-        '@media(max-width:540px)':{
-            
-        }
-        
-    },
+        boxSizing:'border-box'
 
 
-   drawer_content:{
-    display:'flex',
-    position:'relative',
-    width:'100%',
-    height:'100%',
-    flexDirection:'column',
-    boxSizing:'border-box',
-    overflow:'hidden',
-    padding:'4vh 5px 5px 5px'
-   }
-    ,
-    
-    close:{
-        position:'relative',
-        width:'100%',
-        direction:'ltr',
-        display:'flex',
-        flexDirection:'row',
-        justifyContent:'left',
-        top:'-3vh'
-        
-    },
-    closeLeft:{
-        position:'relative',
-        width:'100%',
-        direction:'rtl',
-        display:'flex',
-        flexDirection:'row',
-        justifyContent:'right',
-        top:'-3vh'
-    },
-    drawer_list:{
-    display:'flex',
-    flexDirection:'column',
-    listStyleType:'none',
-    padding:'0px',
-    margin:'0px',
-    boxSizing:'border-box'
-    
-    },
-    drawer_list_item:{
-        display:'flex',
-        flexDirection:'row',
-        justifyContent:'space-between',
-        alignItems:'center',
-        boxSizing:'border-box',
-        padding:'1vh 0.5vw',
-        fontSize:'20px',
-        '&:svg':{
-            fontSize:'24px !important'
-        }
-    },
-    drawer_left_list_item:{
-        display: 'flex',
-        flexDirection:'row-reverse',
-        alignItems:'center',
-        columnGap:'10px'
-
-    },
-    leftSideTools:{
-        display:'flex',
-        flexDirection:'row',
-        justifyContent:'space-between'
     }
 })
 
