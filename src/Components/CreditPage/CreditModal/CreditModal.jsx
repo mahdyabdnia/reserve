@@ -28,7 +28,7 @@ export default function CreditModal({className}) {
 
        <div className={classes.modal_main}>
        <div className={classes.input_control}>
-        <label htmlFor="">مبلغ افزایش اعتبار</label>
+        <label htmlFor="">مبلغ افزایش اعتبار :</label>
         <div className={classes.input_box}>
         <input type="text" className={classes.modal_input} autofocus value={val} onChange={handleChange}/>
            <span>تومان</span>

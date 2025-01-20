@@ -51,6 +51,15 @@ resv_box:{
     maxWidth:'100%',
     boxSizing:'border-box',
     padding:'0px 1vw',
+
+    '@media(max-width:480px)':{
+       '@media(min-width:240px)':{
+        display:'flex !important',
+        flexDirection:'column !important',
+        rowGap:'20px',
+        padding:'1vh 2vw'
+       }
+    }
     
 },
 status_tool_bar:{

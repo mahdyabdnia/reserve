@@ -5,7 +5,7 @@ root:{
     display:'flex',
     flexDirection:'column',
     alignItems:'center',
-    width:'100%'
+    width:'100%' 
 
 },
 week:{
@@ -14,7 +14,7 @@ week:{
     justifyContent:'center',
     width:'100%',
     alignItems:'center',
-    padding:'2vh 0vw',
+    padding:'0.5vh 0vw',
     borderTopRightRadius:'5px',
     borderTopLeftRadius:'5px',
     border:'1px solid rgba(0,0,0,0.3)',
@@ -32,7 +32,7 @@ select_drp:{
     width:'100% !important',
  boxSizing:'border-box',
    position:'relative',
-    padding:'1vh 1vw !important',
+    padding:'0.25vh 1vw !important',
 
 },
 select_loc:{
@@ -48,9 +48,10 @@ flexDirection:'column',
 position:'absolute',
 zIndex:'200',
 backgroundColor:'white',
-top:'20%',
+top:'0',
 width:'100%',
-border:'1px solid rgba(0,0,0)'
+border:'1px solid rgba(0,0,0,0.5)',
+boxSizing:'border-box'
 },
 search_loc_box:{
     display:'flex',
@@ -60,10 +61,12 @@ search_loc_box:{
     border:'1px solid rgba(0,0,0,0.1)',
     boxSizing:'border-box',
     padding:'1vh 0.5vw',
+    overflow:'hidden',
     '& input':{
         display:'flex',
         border:'none',
-        outline:'none'
+        outline:'none',
+        width:'min-content'
     },
     '& svg':{
         color:'rgba(0,0,0,0.4)',
@@ -136,8 +139,8 @@ food_img_name_box:{
     columnGap:'1vw'
 },
 img_box:{
-    width:'70px !important',
-  height:'70px',
+    width:'4vmax !important',
+    height:'4vmax',
     border:'1px solid rgba(0,0,0,0.3)',
     borderRadius:'10px',
     '& img':{
@@ -148,8 +151,8 @@ img_box:{
     }
 },
 img_box_red:{
-    width:'70px !important',
-  height:'70px',
+    width:'4vmax !important',
+    height:'4vmax',
     border:'1px solid rgba(0,0,0,0.3)',
     borderRadius:'10px',
     backgroundColor:'#e89e9b',

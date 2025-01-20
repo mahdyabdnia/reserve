@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import useStyles from './styles'
 import { Add, Close, Down, Search, } from '../../Icons/Icons';
 import { Check } from 'react-feather';
 
-export default function ReserveCard({week}) {
-    const pos=['غذاخوری ۱','غذا خوری ۲','غذا خوری۳']
+export default function ReserveCard({week,change}) {
+    const pos=['غذاخوری ۱','غذا خوری ۲','غذا خوری۳'] 
     const classes=useStyles();
-    const [position, setPos] = useState(pos[0]);
+    const [position, setPos] = useState(pos[0]); 
     const [resvOffOn, setResvOffOn] = useState(false)
     const drpRef = useRef(null)
     const controlDropMenu=()=>{
@@ -22,6 +22,20 @@ export default function ReserveCard({week}) {
     const closeDrop=()=>{
       drpRef.current.style.display="none"
     }
+
+    const handleSelect=(c)=>{
+    closeDrop();
+  
+    setPos(c)
+    }
+    useEffect(() => {
+     setPos(pos[0])
+    
+      return () => {
+      
+      }
+    }, [change])
+    
   return (
     <div className={classes.root}>
       <div className={classes.week}>{week}</div>
@@ -31,14 +45,14 @@ export default function ReserveCard({week}) {
         <div className={classes.select_loc_box} ref={drpRef}>
             <div className={classes.search_loc_box}>
             <Search/>
-                <input type="text" autoFocus />
+                <input type="text" autofocus />
                 
             </div>
 
             <div className={classes.select_option_box}>
            {pos.map((item)=>{
             return(
-                <div onClick={()=>{setPos(item);closeDrop();}} className={classes.position_option}>
+                <div onClick={()=>{handleSelect(item)}} className={classes.position_option}>
                        {item}
                 </div>
             )

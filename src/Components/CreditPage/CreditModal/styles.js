@@ -28,11 +28,13 @@ const useStyles=makeStyles({
         backgroundColor:'white',
         borderRadius:'5px',
         boxShadow:'0px 0px 1px 3px rgba(0,0,0,0.4)',
-        width:'30%',
+        minWidth:'30%',
         minHeight:'50%',
         height:'auto',
         rowGap:'20px',
-      
+        maxHeight:'80%',
+        padding:'2vh 2vw',
+      width:'auto',
         boxSizing:'border-box'
     },
     tool_bar:{
@@ -146,7 +148,7 @@ const useStyles=makeStyles({
         borderRadius:'5px',
         border:'1px solid rgba(0,0,0,0.3)',
         boxSizing:'border-box',
-        padding:'1vh 1vw'
+        padding:'0.5vh 1vw'
 
     },
     portal_select:{
@@ -156,6 +158,7 @@ const useStyles=makeStyles({
         alignItems:'center',
         columnGap:'20px',
         marginBottom:'20px',
+        
 
     },
     portal:{
