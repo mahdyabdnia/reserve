@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles=makeStyles({
 root:{
-    display:'flex',
+    display:'flex', 
  
     
     flexDirection:'row',

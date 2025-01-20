@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useStyles from './styles'
 import { Close } from '../../Icons/Icons';
 import classnames from 'classnames'
 export default function CreditModal({className}) {
     const classes=useStyles();
+    const handleChange = (e) => {
+      const inputValue = e.target.value;
+      // فقط اعداد را بپذیرید
+      if (/^\d*$/.test(inputValue)) {
+          setval(inputValue);
+      }
+  };
      const selectOption=[200000,500000,10000000]
+     const displayOptions = selectOption.map(option => option.toLocaleString('fa-IR'));
+     const [val, setval] = useState('')
      const closeModal=()=>{
         document.getElementsByClassName('creditModal')[0].style.display="none"
         document.body.style.overflow="scroll"
@@ -20,13 +29,16 @@ export default function CreditModal({className}) {
        <div className={classes.modal_main}>
        <div className={classes.input_control}>
         <label htmlFor="">مبلغ افزایش اعتبار</label>
-        <input type="text" className={classes.modal_input} autoFocus/>
+        <div className={classes.input_box}>
+        <input type="text" className={classes.modal_input} autofocus value={val} onChange={handleChange}/>
+           <span>تومان</span>
+        </div>
        </div>
 
        <div className={classes.modal_select_box}>
      
-        {selectOption.map((i)=>{
-            return(   <button className={classes.modal_select_button}>
+        {displayOptions.map((i)=>{
+            return(   <button className={classes.modal_select_button} onClick={()=>{setval(i)}}>
                 {i} تومان
             </button>)
         })}
@@ -35,7 +47,17 @@ export default function CreditModal({className}) {
 
        <div className={classes.portal_select_box}>
         <p>لطفا درگاه مورد نظر خود را انتخاب کنید.</p>
-        <div className={classes.portal_select}></div>
+        <div className={classes.portal_select}>
+          <div className={classes.portal}>
+            <img src="images/zarinpal.png" alt="" className={classes.portal_img}/>
+          <input type="radio" />
+          </div>
+
+          <div className={classes.portal}>
+            <img src="images/melat.png" alt=""  className={classes.portal_img}/>
+          <input type="radio" />
+          </div>
+        </div>
        </div>
 
        <button className={classes.portal_login_button}>ورود به درگاه </button>

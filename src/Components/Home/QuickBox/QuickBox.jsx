@@ -17,12 +17,12 @@ export default function QuickBox() {
     const setDel=()=>{ 
 
     }
-    const card=[{tag:'افزایش اعتبار',imgSrc:'images/increase-credit.png',fun:openModal},{tag:' رزرو غذا'   ,imgSrc:'images/food-flat.png',fun:goToReservePage},{tag:' اعطای تحویل غذا'   ,imgSrc:'images/serving-food.png',fun:setDel}]
+    const card=[{tag:'افزایش اعتبار',imgSrc:'images/payment.svg',fun:openModal},{tag:' رزرو غذا'   ,imgSrc:'images/food-flat.png',fun:goToReservePage},{tag:' اعطای تحویل غذا'   ,imgSrc:'images/serving-food.png',fun:setDel}]
     const classes=useStyles();
   return (
     <div className={classes.root}>
        
-        <CreditModal className={'creditModal'}/>
+        <CreditModal className={'creditModal'}/> 
      {card.map((item)=>{
         return(
             <>

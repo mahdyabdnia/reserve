@@ -3,7 +3,8 @@ import { makeStyles } from "@mui/styles";
 const useStyles=makeStyles({
     "@global": {
         body: {
-        // Add your desired overflow property here
+        // Add your desired overflow property here,
+
         },
       },
     modal_root:{
@@ -28,7 +29,9 @@ const useStyles=makeStyles({
         borderRadius:'5px',
         boxShadow:'0px 0px 1px 3px rgba(0,0,0,0.4)',
         width:'30%',
-        height:'50%',
+        minHeight:'50%',
+        height:'auto',
+        rowGap:'20px',
       
         boxSizing:'border-box'
     },
@@ -94,6 +97,11 @@ const useStyles=makeStyles({
         border:'1px solid rgba(0,0,0,0.2)',
         outline:'none',
         width:'50%',
+        border:'none',
+        outline:'none',
+        '&:focus':{
+            outline:'none'
+        }
       
         
 
@@ -110,10 +118,12 @@ const useStyles=makeStyles({
         backgroundColor:'white',
         padding:'0.5vh 0.5vw',
         borderRadius:'5px',
-        border:'1px solid rgba(0,0,0,0.5)'
+        border:'1px solid rgba(0,0,0,0.5)',
+        cursor:'pointer'
     },
     portal_select_box:{
-        textAlign:'right'
+        textAlign:'right',
+        marginBottm:'30px'
     },
     portal_login_button:{
         display:'flex',
@@ -127,6 +137,37 @@ const useStyles=makeStyles({
         color:'white',
         fontWeight:'bolder',
         cursor:'pointer'
+    },
+    input_box:{
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between',
+        borderRadius:'5px',
+        border:'1px solid rgba(0,0,0,0.3)',
+        boxSizing:'border-box',
+        padding:'1vh 1vw'
+
+    },
+    portal_select:{
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center',
+        columnGap:'20px',
+        marginBottom:'20px',
+
+    },
+    portal:{
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+    },
+    portal_img:{
+        width:'60px',
+        aspectRatio:'1/1',
+        objectFit:'contain',
+
     }
 
 })

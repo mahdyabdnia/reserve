@@ -1,23 +1,23 @@
 import { makeStyles } from "@mui/styles";
 
 const useStyles=makeStyles({
-card:{
+card_img:{
     display:'flex',
-    flexDirection:'column',
+    flexDirection:'row',
     alignItems:'center',
     justifyContent:'center',
-    rowGap:'1vh',
-    width:'50%',
-    padding:'1vh 1vw',
-    borderRadius:'5px',
+    aspectRatio:'1/1',
+    width:'100px',
+    objectFit:'contain'
+},
+card:{
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    gap:'1vh 1vw',
     boxSizing:'border-box',
-     
- 
-  
-    alignSelf:'center',
-    '&:last-child':{
-        justifySelf:'center',
-        flexGrow: '2'
+    '&:nth-of-type(2n)':{
+        flexDirection:'row-reverse'
     }
 }
 })
