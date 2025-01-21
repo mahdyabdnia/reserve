@@ -19,7 +19,8 @@ const useStyles=makeStyles({
         height:'100%',
         backgroundColor:'rgba(0,0,0,0.5)',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        zIndex:'20000000'
     },
     modal_content:{
         display:'flex',

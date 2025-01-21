@@ -5,17 +5,20 @@ import { Check } from 'react-feather';
 
 export default function ReserveCard({week,change}) {
     const pos=['غذاخوری ۱','غذا خوری ۲','غذا خوری۳'] 
-    const classes=useStyles();
+    const classes=useStyles(); 
     const [position, setPos] = useState(pos[0]); 
     const [resvOffOn, setResvOffOn] = useState(false)
     const drpRef = useRef(null)
-    const controlDropMenu=()=>{
+    const controlDropMenu=(event)=>{
       if(drpRef.current.style.display==="none"){
         drpRef.current.style.display="flex"
+        event.target.firstElementChild.style.transform="rotate(180deg)"
       }
       else{
         drpRef.current.style.display="none"
+        event.target.firstElementChild.style.transform="rotate(360deg)"
       }
+    
    
     }
 

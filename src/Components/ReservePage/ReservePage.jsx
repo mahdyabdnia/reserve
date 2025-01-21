@@ -4,8 +4,9 @@ import classnames from 'classnames'
 import ReserveCard from './ReserveCard/ReserveCard'
 import TimeBar from './TimeBar/TimeBar'
 import { useNavigate } from 'react-router-dom' 
+import CreditModal from '../CreditPage/CreditModal/CreditModal'
 
-export default function ReservePage() {
+export default function ReservePage() { 
   const navigate=useNavigate()
     const [tab, setTab] = useState(0)
     const [change, setchange] = useState(false)
@@ -13,6 +14,10 @@ export default function ReservePage() {
     const weeks=[{name:'شنبه'},{name:'یکشنبه'},{name:'دوشنبه'},{name:'سه‌شنبه'},{name:'چهارشنبه'},{name:'پنجشنبه'},{name:'جمعه'},]
     const classes=useStyles();
     const tabRef=useRef();
+    const openModal=()=>{
+      document.getElementsByClassName('creditModal')[0].style.display="flex"
+      document.body.style.overflow="hidden"
+      }
     const handleTab=(c)=>{
        setchange(!change);
        setTab(c)
@@ -26,7 +31,8 @@ export default function ReservePage() {
 
        <div className={classes.status_tool_bar}>
         <button className={classes.status_btn} onClick={()=>{navigate('/')}}>ذخیره</button>
-        <button className={classes.status_btn}>افزایش اعتبار</button>
+        <button className={classes.status_btn} onClick={openModal}>افزایش اعتبار</button>
+        <CreditModal className={'crd'}/>
         </div> 
       <div className={classes.tabs_time}>
       {tabs.map((item,index)=>{

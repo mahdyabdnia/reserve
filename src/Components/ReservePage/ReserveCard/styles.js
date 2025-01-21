@@ -5,7 +5,9 @@ root:{
     display:'flex',
     flexDirection:'column',
     alignItems:'center',
-    width:'100%' 
+    width:'100%' ,
+    boxShadow:'0px 0px 5px 0.5px rgba(0,0,0,0.5)',
+    marginTop:'5px'
 
 },
 week:{
@@ -33,6 +35,11 @@ select_drp:{
  boxSizing:'border-box',
    position:'relative',
     padding:'0.25vh 1vw !important',
+    cursor:'pointer',
+    '&:hover':{
+        backgroundColor:'#ffeead'
+    }
+
 
 },
 select_loc:{
@@ -111,6 +118,8 @@ btn_add:{
     alignItems:'center',
     justifyContent:'center',
     borderRadius:'5px',
+    backgroundColor:'#ffffff',
+    boxShadow:'0px 0px 4px 1px rgba(0,0,0,0.5)',
    
     '& svg':{
         fontSize:'15px !important'
@@ -124,6 +133,7 @@ btn_remove:{
     justifyContent:'center',
     backgroundColor:'#e89e9b',
     border:'1px solid rgba(0,0,0,0.1)',
+    boxShadow:'0px 0px 4px 1px rgba(0,0,0,0.4)',
     borderRadius:'5px',
    
     '& svg':{
