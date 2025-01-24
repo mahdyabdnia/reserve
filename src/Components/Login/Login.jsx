@@ -1,103 +1,101 @@
-import React,{useRef,useEffect,useState} from 'react'
-import useStyles from './styles'
-import { useNavigate } from 'react-router-dom'
-import { Eye } from 'react-feather'
-import supabase from '../../supabaseClient'
+import React, { useRef, useEffect, useState } from 'react';
+import useStyles from './styles';
+import { useNavigate } from 'react-router-dom';
+import { Eye } from 'react-feather';
+import supabase from '../../supabaseClient';
 
 export default function Login() {
-    const classes=useStyles()
-    const navigate=useNavigate() 
-    const eyeRef=useRef(null);
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [userMass, setUserMass] = useState('')
-    const [passMass, setPassMass] = useState('')
-    const [mass, setMass] = useState('')
-    const passRef=useRef(null);
-    const [show, setShow] = useState(false) 
-    const login=async()=>{
-      if (username !== '' && password !== '') {
-        const { data: users, error } = await supabase
-            .from('users') // نام جدول کاربران
-            .select('*'); // تمام رکوردها را دریافت کنید
+    const classes = useStyles();
+    const navigate = useNavigate();
+    const eyeRef = useRef(null);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const passRef = useRef(null);
+    const [show, setShow] = useState(false);
 
-        if (error) {
-            setMass('خطا در بارگذاری اطلاعات کاربران');
-            return;
-        }
+    const login = async () => {
+        if (username !== '' && password !== '') {
+            console.log('Trying to log in...');
 
-        // بررسی وجود نام کاربری و پسورد
-        const user = users.find(user => user.username === username && user.password === password);
+            const { data, error } = await supabase
+                .from('users') // نام جدول کاربران
+                .select('*') // تمام رکوردها را دریافت کنید
+                .eq('username', username) // جستجو بر اساس نام کاربری
+                .single(); // فقط یک رکورد را برمی‌گرداند
 
-        if (!user) {
-            setMass('نام کاربری یا گذرواژه نادرست است');
+            if (error) {
+                console.error('Error fetching user:', error.message);
+                setMessage('خطا در بارگذاری اطلاعات کاربران');
+                return;
+            }
+
+            console.log('User data:', data);
+
+            if (!data) {
+                // اگر کاربر وجود نداشت
+                setMessage('کاربری با این نام کاربری وجود ندارد');
+            } else if (data.password !== password) {
+                // بررسی پسورد
+                setMessage('گذرواژه نادرست است');
+            } else {
+                // اگر کاربر وجود داشت و پسورد صحیح بود
+                console.log('Login successful!');
+                navigate('/');
+            }
         } else {
-            // اگر کاربر وجود داشت، به صفحه اصلی بروید
-            navigate('/');
+            setMessage('لطفا نام کاربری و گذرواژه را وارد کنید');
         }
-    }
+    };
 
-      else if(password==='' && username===''){
-        setMass('لطفا نام کاربری و گذرواژه را وارد کنید')
-        setUserMass('')
-        setPassMass('')
-      }
-      else if(username===''){
-        setPassMass('لطفا نام کاربری را وارد کنید')
-        setMass('')
-        setUserMass('')
-      }
-      else if(password===''){
-        setUserMass('لطفا گذرواژه را وارد کنید')
-        setMass('')
-        setPassMass('')
-      }
-      }
-    const controlForm=(e)=>{
-e.preventDefault();
-    }
-
- 
+    const controlForm = (e) => {
+        e.preventDefault();
+    };
 
     useEffect(() => {
-      const input=passRef.current;
+        const input = passRef.current;
         return () => {
-           if(show===true){
-            input.type="text"
-           }
-           else{
-            input.type="password"
-           }
-        }
-      }, [show])
+            input.type = show ? "text" : "password";
+        };
+    }, [show]);
 
-    
-  return (
-    <div className={classes.login_root}  >
-      <div className={classes.login_page}>
-     
-            <form action="" className={classes.form_box} onSubmit={controlForm} >
-              <div className={classes.form_control}>
-                <label htmlFor="" className={classes.form_label}> شماره دانشجویی  </label>
-              <div className={classes.form_card}>
-              <input type="text" name="" id="" className={classes.form_input} autoComplete='' required value={username}  onChange={(e) => /^\d*$/.test(e.target.value) && setUsername(e.target.value)} autoFocus/>
-              </div>
-               
-              </div>
-              <div className={classes.form_control}>
-                <label htmlFor="" className={classes.form_label}>گذرواژه</label>
-                <div className={classes.form_card}>
-                <input type="password"  autoComplete='' className={classes.form_input} ref={passRef} value={password} required onChange={(e)=>{setPassword(e.target.value)}} />
-                <button className={classes.eye_btn} ref={eyeRef} onClick={()=>{setShow(!show)}}><Eye/></button>
-                </div>
-              
-              </div>
-              <input type="submit" value="ورود" className={classes.form_submit} onClick={login}/>
-              <button className={classes.form_change_btn}> {passMass} {userMass} {mass}</button>
-            </form>
-            
-
-      </div>
-    </div>
-  )
-} 
+    return (
+        <div className={classes.login_root}>
+            <div className={classes.login_page}>
+                <form action="" className={classes.form_box} onSubmit={controlForm}>
+                    <div className={classes.form_control}>
+                        <label htmlFor="" className={classes.form_label}> شماره دانشجویی </label>
+                        <div className={classes.form_card}>
+                            <input
+                                type="text"
+                                className={classes.form_input}
+                                autoComplete=''
+                                required
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                autoFocus
+                            />
+                        </div>
+                    </div>
+                    <div className={classes.form_control}>
+                        <label htmlFor="" className={classes.form_label}>گذرواژه</label>
+                        <div className={classes.form_card}>
+                            <input
+                                type="password"
+                                autoComplete=''
+                                className={classes.form_input}
+                                ref={passRef}
+                                value={password}
+                                required
+                                onChange={(e) => { setPassword(e.target.value); }}
+                            />
+                            <button className={classes.eye_btn} ref={eyeRef} onClick={() => { setShow(!show); }}><Eye /></button>
+                        </div>
+                    </div>
+                    <input type="submit" value="ورود" className={classes.form_submit} onClick={login} />
+                    <div className={classes.form_change_btn}>{message}</div>
+                </form>
+            </div>
+        </div>
+    );
+    }
