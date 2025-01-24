@@ -22,7 +22,7 @@ export default function Login() {
             .select('*'); // تمام رکوردها را دریافت کنید
 
         if (error) {
-            setMas('خطا در بارگذاری اطلاعات کاربران');
+            setMass('خطا در بارگذاری اطلاعات کاربران');
             return;
         }
 
