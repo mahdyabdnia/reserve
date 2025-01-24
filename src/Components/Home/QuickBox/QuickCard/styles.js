@@ -19,20 +19,12 @@ card:{
    
     transition:'top 2s',
     position:'relative',
-    boxSizing:'border-box',
-    top:'100px',
-    '&:nth-of-type(2n+1)':{
-        flexDirection:'row-reverse',
-        position:'relative',
-        top:'120px'
-    },
+    boxSizing:'border-box', 
+    transition:'1s transform',
     
-    '&:last-child':{
-        position:'relative',
-        top:'200px'
-    },
+    
     '&:hover':{
-     top:'-10px'
+     transform:' rotate(360deg)'
     }
 }
 })

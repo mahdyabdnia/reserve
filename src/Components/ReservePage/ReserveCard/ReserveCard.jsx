@@ -33,6 +33,7 @@ export default function ReserveCard({week,change}) {
     }
     useEffect(() => {
      setPos(pos[0])
+     setResvOffOn(false)
     
       return () => {
       

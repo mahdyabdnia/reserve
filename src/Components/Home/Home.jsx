@@ -4,13 +4,34 @@ import { Divider } from '@mui/material'
 import { Down } from '../Icons/Icons'
 import {muiDivider} from '@mui/material'
 import QuickBox from './QuickBox/QuickBox'
+import NewsBox from './NewsBox/NewsBox'
 export default function Home() {
   const notifRef = useRef(null)
   const notifBoxRef=useRef(null)
+  const drawerRef = useRef(null)
+  const openDrawer = (event, index) => {
+    console.log('Clicked index:', index);
+    const drawers = document.getElementsByClassName('drawer');
+    const drawer = drawers[index];
+
+    if (drawer) {
+        console.log('Current height:', drawer.style.height);
+        if (drawer.style.height === '0px' ) {
+            const contentHeight = '300px';
+            drawer.style.height = contentHeight; // باز کردن دراور
+        } else {
+            drawer.style.height = '0'; // بستن دراور
+        }
+    } else {
+        console.error('Drawer not found for index:', index);
+    }
+};
+    
+  
   const classes=useStyles()
   const handleOpenClose=()=>{
    if(notifRef.current.style.maxHeight){
-    notifRef.current.style.maxHeight=null
+    notifRef.current.style.maxHeight=null 
     notifBoxRef.current.style.paddingBottom="0px"
    }
    else{
@@ -20,9 +41,12 @@ export default function Home() {
   }
   return (
     <div className={classes.root}> 
-    <h2 className={classes.header}>دسترسی سریع</h2>
+    <h2 className={classes.header} onClick={(e)=>{openDrawer(e,0)}}>دسترسی سریع</h2>
    
-       <QuickBox/>
+       <QuickBox className={'drawer'}/>
+       <h2 className={classes.header} onClick={(e)=>{openDrawer(e,1)}}>   اطلاعیه‌ها </h2>  
+       <NewsBox className={'drawer'}/>
+
     </div>
   )
 }

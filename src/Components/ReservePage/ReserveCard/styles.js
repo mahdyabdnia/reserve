@@ -7,7 +7,17 @@ root:{
     alignItems:'center',
     width:'100%' ,
     boxShadow:'0px 0px 5px 0.5px rgba(0,0,0,0.5)',
-    marginTop:'5px'
+    marginTop:'5px',
+    transition:'1s transform',
+    position :'relative',
+    backfaceVisibility:'hidden',
+    '&:hover':{
+     transform:'translateY(50%) scale(1)',
+     zIndex:'200000',
+     backfaceVisibility:'hidden',
+     backdropFilter:'opacity(0)',
+     boxShadow:'0px 0px 5px 2px rgba(0,0,0,0.5)',
+    }
 
 },
 week:{
@@ -20,7 +30,8 @@ week:{
     borderTopRightRadius:'5px',
     borderTopLeftRadius:'5px',
     border:'1px solid rgba(0,0,0,0.3)',
-    boxSizing:'border-box'
+    boxSizing:'border-box',
+    backgroundColor:'#a0b3db'
 
 },
 select_drp:{
@@ -28,7 +39,7 @@ select_drp:{
     flexDirection:'row',
     alignItems:'center',
     justifyContent:'space-between',
-    backgroundColor:'#ffeebd',
+    backgroundColor:'#a0cdfa',
     border:'1px solid rgba(0,0,0,0.1)',
     direction:'ltr',
     width:'100% !important',
@@ -37,7 +48,7 @@ select_drp:{
     padding:'0.25vh 1vw !important',
     cursor:'pointer',
     '&:hover':{
-        backgroundColor:'#ffeead'
+        backgroundColor:'#86b1db'
     }
 
 
@@ -118,8 +129,12 @@ btn_add:{
     alignItems:'center',
     justifyContent:'center',
     borderRadius:'5px',
-    backgroundColor:'#ffffff',
+    backgroundColor:'#9edb53',
     boxShadow:'0px 0px 4px 1px rgba(0,0,0,0.5)',
+    transition:'1s transform',
+    '&:hover':{
+transform:'scale(1.1)'
+    },
    
     '& svg':{
         fontSize:'15px !important'
@@ -135,6 +150,10 @@ btn_remove:{
     border:'1px solid rgba(0,0,0,0.1)',
     boxShadow:'0px 0px 4px 1px rgba(0,0,0,0.4)',
     borderRadius:'5px',
+    transition:'1s transform',
+    '&:hover':{
+transform:'scale(1.1)'
+    },
    
     '& svg':{
         fontSize:'15px !important',
@@ -153,6 +172,7 @@ img_box:{
     height:'4vmax',
     border:'1px solid rgba(0,0,0,0.3)',
     borderRadius:'10px',
+    backgroundColor:'#6fbcf2',
     '& img':{
         objectFit: 'contain',
         width:'100%',
@@ -165,7 +185,7 @@ img_box_red:{
     height:'4vmax',
     border:'1px solid rgba(0,0,0,0.3)',
     borderRadius:'10px',
-    backgroundColor:'#e89e9b',
+    backgroundColor:'#a0dbb8',
     display:'flex',
     justifyContent:'center',
     alignItems:'center',

@@ -28,7 +28,7 @@ export default function Navbar() {
     document.getElementsByClassName(c)[0].parentNode.style.display="flex";
      
   
-
+ 
     document.body.style.overflow="hidden"
    }
   

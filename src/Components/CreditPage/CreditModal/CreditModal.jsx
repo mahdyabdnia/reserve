@@ -15,7 +15,7 @@ export default function CreditModal({className}) {
      const displayOptions = selectOption.map(option => option.toLocaleString('fa-IR'));
      const [val, setval] = useState('')
      const closeModal=()=>{
-        document.getElementsByClassName('creditModal')[0].style.display="none"
+        document.getElementsByClassName('creditModal')[0].style.display="none" 
         document.body.style.overflow="scroll"
      }
   return (

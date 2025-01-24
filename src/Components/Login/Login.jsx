@@ -2,7 +2,7 @@ import React,{useRef,useEffect,useState} from 'react'
 import useStyles from './styles'
 import { useNavigate } from 'react-router-dom'
 import { Eye } from 'react-feather'
-
+import supabase from '../../supabaseClient'
 
 export default function Login() {
     const classes=useStyles()
@@ -15,10 +15,27 @@ export default function Login() {
     const [mass, setMass] = useState('')
     const passRef=useRef(null);
     const [show, setShow] = useState(false) 
-    const login=()=>{
-      if(username!== '' && password!==''){
-        navigate('/')
-      }
+    const login=async()=>{
+      if (username !== '' && password !== '') {
+        const { data: users, error } = await supabase
+            .from('users') // نام جدول کاربران
+            .select('*'); // تمام رکوردها را دریافت کنید
+
+        if (error) {
+            setMas('خطا در بارگذاری اطلاعات کاربران');
+            return;
+        }
+
+        // بررسی وجود نام کاربری و پسورد
+        const user = users.find(user => user.username === username && user.password === password);
+
+        if (!user) {
+            setMass('نام کاربری یا گذرواژه نادرست است');
+        } else {
+            // اگر کاربر وجود داشت، به صفحه اصلی بروید
+            navigate('/');
+        }
+    }
 
       else if(password==='' && username===''){
         setMass('لطفا نام کاربری و گذرواژه را وارد کنید')
@@ -40,6 +57,8 @@ export default function Login() {
 e.preventDefault();
     }
 
+ 
+
     useEffect(() => {
       const input=passRef.current;
         return () => {
@@ -51,6 +70,7 @@ e.preventDefault();
            }
         }
       }, [show])
+
     
   return (
     <div className={classes.login_root}  >

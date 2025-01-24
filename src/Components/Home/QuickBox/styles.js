@@ -6,9 +6,14 @@ root:{
  
     
     flexDirection:'row',
-    justifyContent:'space-between',
+    justifyContent:'space-between', 
     rowGap:'5vh',
-    flexWrap:'wrap'
+    flexWrap:'wrap',
+  height:'0px',
+  overflow:'hidden',
+  transition:'1s height',
+    
+    position:'relative'
 }
 })
 
