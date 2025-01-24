@@ -6,7 +6,7 @@ food_root:{
     flexDirection:'column',
     boxSizing:'border-box',
     rowGap:'20px',
-    padding:'2vmax 2vmax',
+    padding:'2vmax 5vw',
     backgroundcolor:'white',
 
 },
@@ -38,13 +38,13 @@ justifyContent:'space-between',
 borderRadius:'5px',
 color:'white',
 fontWeight:'bolder',
-fontSize:'20px',
+fontSize:'16px',
 boxShadow:'0px 0px 3px 1px rgba(0,0,0,0.3)',
 boxSizing:'border_box',
 padding:'0.5vmax 1vmax',
 transition:'0.5s font-size',
 '&:hover':{
-    fontSize:'22px'
+    fontSize:'18px'
 }
 
 },
@@ -74,8 +74,11 @@ food_box:{
     padding:'1vmax 1vmax'
 },
 food_table:{
-    borderCollapse:'collapse',
+    borderCollapse:'separate',
     border:'1px solid rgba(0,0,0,0.4)',
+    display:'flex',
+    flexDirection:'column',
+    borderRadius:'10px'
 
 },
 table_header:{
@@ -89,6 +92,7 @@ table_header:{
     color:'rgba(0,0,0,0.5)',
     boxSizing:'border-box',
     padding:'0.5vmax 1vmax',
+   
 
 },
 table_data:{
@@ -99,12 +103,40 @@ table_data:{
     boxSizing:'border-box',
     fontSize:'15px',
     fontWeight:'400',
-    padding:'0.5vmax 1vamx',
+    padding:'0.5vmax 1vmax',
     textAlign:'center',
    textOverflow:'ellipsis',
    wordWrap:'nowrap',
+ 
 
 
+},
+table_row:{
+    display:'grid',
+     gridTemplateColumns:'repeat(auto-fit, minmax(50px, 3fr))',
+    alignItems:'center',
+    boxSizing:'border-box',
+    padding:'1vmax 1vmax',
+    justifyContent:'space-between',
+    border:'1px solid rgba(0,0,0,0.5)'
+},
+up_button:{
+display:'flex',
+flexDirection:'row',
+alignItems:'center',
+justifyContent:'space-between',
+boxSizing:'border-box',
+padding:'0.75vmax 1vmax',
+marginLeft:'10px'
+},
+remove_button:{
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-between',
+    boxSizing:'border-box',
+    padding:'0.75vmax 1vmax',
+    marginRight:'10px'
 }
 
 })
