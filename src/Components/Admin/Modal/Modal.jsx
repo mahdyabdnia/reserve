@@ -13,7 +13,7 @@ export default function Modal({ref}) {
         <div className={classes.modal_content}>
             <span className={classes.close_btn} onClick={closeModal}><Close/></span>
             <div className={classes.modal_box}>
-              <form action=""  >
+              <form action=""  className={classes.form}>
                    <div className={classes.form_control}>
                     <label htmlFor="" className={classes.form_label}>نام غذا</label>
                     <div className={classes.form_input_box}>

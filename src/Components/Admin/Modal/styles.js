@@ -152,6 +152,9 @@ option:{
  justifyContent:'space-between',
  color:'rgba(0,0,0,0.7)',
  fontSize:'15px'
+},
+form:{
+    width:'50%'
 }
 })
 
