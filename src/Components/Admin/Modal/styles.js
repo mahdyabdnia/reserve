@@ -48,13 +48,14 @@ modal_box:{
     padding:'1vh 1vw',
     boxSizing:'border-box',
     height:'auto',
+    rowGap:'20px'
 
     
 },
 form_control:{
     display:'flex',
     flexDirection:'column',
-    rowGap:'20px',
+    rowGap:'10px',
     alignItems:'flex-start',
     justifyContent:'center',
     boxSizing:'border-box',
@@ -77,6 +78,7 @@ borderRadius:'5px',
 boxSizing:'border-box',
 padding:'1vmax 1vmax',
 border:'1px solid rgba(0,0,0,0.4)',
+width:'100%'
 
 
 },
@@ -104,14 +106,15 @@ form_text:{
     lineHeight:'1.5',
     boxSizing:'border-box',
     width:'100%',
-    padding:'1vmax 1vmax'
+    padding:'1vmax 1vmax',
+    height:'50px'
 },
 select_box:{
  display:'flex',
  flexDirection:'column',
  borderRadius:'5px',
  border:'1px solid rgba(0,0,0,0.5)',
- width:'100%',
+ width:'50%',
  position:'relative',
  boxSizing:'border-box',
  padding:'1vmax 1vmax'
