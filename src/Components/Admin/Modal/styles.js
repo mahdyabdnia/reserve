@@ -76,7 +76,7 @@ flexDirection:'row',
 alignItems:'center',
 borderRadius:'5px',
 boxSizing:'border-box',
-padding:'1vmax 1vmax',
+padding:'0.5vmax 1vmax',
 border:'1px solid rgba(0,0,0,0.4)',
 width:'100%'
 
@@ -106,18 +106,21 @@ form_text:{
     lineHeight:'1.5',
     boxSizing:'border-box',
     width:'100%',
-    padding:'1vmax 1vmax',
-    height:'50px'
+    padding:'0.5vmax 1vmax',
+    height:'50px',
+    scrollbarWidth:'0px'
 },
 select_box:{
  display:'flex',
  flexDirection:'column',
  borderRadius:'5px',
  border:'1px solid rgba(0,0,0,0.5)',
- width:'50%',
+ width:'100%',
  position:'relative',
  boxSizing:'border-box',
- padding:'1vmax 1vmax'
+ padding:'0.5vmax 1vmax',
+ justifyContent:'center'
+ 
 
 },
 select:{
@@ -126,23 +129,27 @@ flexDirection:'row',
 alignItems:'center',
 justifyContent:'space-between',
 boxSizing:'border-box',
-padding:'1vmax 1vmax',
+ 
 fontSize:'15px',
 color:'rgba(0,0,0,0.8)'
 
 
 },
 option_box:{
-display:'flex',
+display:'none',
 flexDirection:'column',
-postion:'absolute',
+
 boxSizing:'border-box',
-padding:'1vmax 1vmax',
+padding:'0.5vmax 1vmax',
 border:'1px solid rgba(0,0,0,0.5)',
 top:'100%',
 height:'auto',
 width:'100%',
-rowGap:'10px'
+rowGap:'10px',
+position:'absolute',
+right:'-0.5%',
+zIndex:'20000',
+backgroundColor:'white'
 
 },
 option:{
@@ -154,7 +161,29 @@ option:{
  fontSize:'15px'
 },
 form:{
-    width:'50%'
+    width:'75%',
+    margin:'auto',
+    rowGap:'20px'
+},
+button_box:{
+    display:'flex',
+    flexDirection:'row',
+    columnGap:'30px',
+    marginTop:'20px'
+
+},
+button:{
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
+    borderRadius:'5px',
+    boxSizing:'border-box',
+    padding:'0.5vmax 1vmax',
+    backgroundcolor:'#ab4578',
+    color:'white',
+    fontSize:'15px',
+    fontWeight:'bolder'
 }
 })
 
