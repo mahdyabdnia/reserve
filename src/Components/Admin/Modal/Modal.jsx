@@ -13,6 +13,7 @@ export default function Modal({ref,className,onCreate}) {
     const [cat, setcat] = useState(0)
     const [catName, setcatName] = useState('')
     const [price, setprice] = useState(0)
+    const modalRef = useRef(null)
      const openMenu=()=>{
         const menu=menuRef.current;
         if(menu.style.display==="flex"){
@@ -64,6 +65,7 @@ export default function Modal({ref,className,onCreate}) {
         setname('')
         setdesc('')
         menuRef.current.parentElement.style.display="none"
+        
       }
      }
 
@@ -85,13 +87,41 @@ export default function Modal({ref,className,onCreate}) {
       }
        
      }
+
+     const saveSend=async()=>{
+      const {error}=await supabase
+      .from('meals')
+      .insert([{name:name,desc:desc,price:price,category_id:cat}])
+      if(error){
+        setError('خطا در ارسال داده')
+      }
+      else{
+        setcat(0)
+        setprice(0)
+        setname('')
+        setdesc('')
+        onCreate();
+        const menu=modalRef.current;
+        menu.style.display="none"
+
+        
+      }
+
+      }
+     
      
     const closeModal=(event)=>{
-    const parent=event.currentTarget.parentElement.parentElement;
+    const parent=modalRef.current;
     parent.style.display="none"
+    menuRef.current.style.display="none"
+    setcat(0)
+    setprice(0)
+    setname('')
+    setdesc('')
+    setcatName('')
     }
   return (
-    <div className={classnames(classes.modal_root,className)} ref={ref}>
+    <div className={classnames(classes.modal_root,className)} ref={modalRef}>
         <div className={classes.modal_content}>
             <span className={classes.close_btn} onClick={closeModal}><Close/></span>
             <div className={classes.modal_box}>
@@ -106,7 +136,7 @@ export default function Modal({ref,className,onCreate}) {
                    <div className={classes.form_control}>
                     <label htmlFor="" className={classes.form_label}>توضیحات</label>
                      
-                     <textarea name="" id="" cols="30" rows="10" className={classes.form_text} onChange={(e)=>{setdesc(e.target.value)}}>{desc}</textarea>
+                     <textarea name="" id="" cols="30" rows="10" className={classes.form_text} onChange={(e)=>{setdesc(e.target.value)}} value={desc}>{desc}</textarea>
                      
                    </div>
 
@@ -151,7 +181,7 @@ export default function Modal({ref,className,onCreate}) {
 
               </form>
               <div className={classes.button_box}>
-                    <button className={classes.button} onClick={closeModal}>ثبت غذا </button>
+                    <button className={classes.button} onClick={saveSend}>ثبت غذا </button>
                     <button className={classes.button} onClick={handleSendNext}>ثبت و ادامه</button>
                     <button className={classes.button} onClick={closeModal}>لغو عملیات</button>
                     {error}
