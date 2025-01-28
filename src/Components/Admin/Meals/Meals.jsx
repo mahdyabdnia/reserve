@@ -3,6 +3,7 @@ import useStyles from './styles'
 import classnames from 'classnames'
 import Modal from './Modal/Modal'
 import supabase from '../../../supabaseClient'
+import { useEffect } from 'react'
 export default function  () {
     const classes=useStyles()
     const [data, setData] = useState([])
@@ -12,7 +13,7 @@ export default function  () {
     const onCreate=async()=>{
         const {data,error}=await supabase
         .from('plan')
-        .select('*')
+        .select('*,weekday(*),meals(*),categories(*)')
         if(error){
             
         }
@@ -20,6 +21,27 @@ export default function  () {
             setData(data);
         }
     }
+
+
+    useEffect(() => {
+      const fetchData=async()=>{
+         const {data,error}=await supabase
+         .from('plan') 
+         .select('* , weekday(*), meals(*), categories(*)')
+         if(error){
+
+         }
+
+         else{
+            setData(data)
+         }
+      }
+      fetchData()
+      return () => {
+         
+      }
+    }, [])
+    
   return (
     <div className={classes.meals_root}> 
     <Modal className={'modal'} onCreate={onCreate}/>
@@ -54,17 +76,24 @@ export default function  () {
             </tr>
         </thead>
         <tbody className={classes.table_body}> 
-            <tr className={classes.table_row}>
-                <td className={classes.table_body_data}>a</td>
-                <td className={classes.table_body_data}>a</td>
-                <td className={classes.table_body_data}>a</td>
-                <td className={classes.table_body_data}>a</td>
-                <td className={classes.table_body_data}>a</td>
-                <td className={classes.table_body_data}>a</td>
-                <td className={classes.table_body_data}>a</td>
-               
+
+        {data.map((item,index)=>{
+                    return(
+                        <tr className={classes.table_row}>
                 
-            </tr>
+                        <td className={classes.table_body_data}>{index+1}</td>
+                        <td className={classes.table_body_data}>{item.weekday.weekday_name}</td>
+                        <td className={classes.table_body_data}>{item.categories.name}</td>
+                        <td className={classes.table_body_data}>{item.meals.name}</td>
+                        <td className={classes.table_body_data}>{}</td>
+                        <td className={classes.table_body_data}>{}</td>
+                        <td className={classes.table_body_data}>{}</td>
+                       
+                        
+                    </tr>
+                    )
+                })}
+          
         </tbody>
        </table>
 
