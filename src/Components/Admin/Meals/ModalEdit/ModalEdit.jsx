@@ -146,7 +146,7 @@ export default function ModalEdit({className, editId,onUpdate}) {
       if (data && data.length > 0) {
           setname(data[0].name || '');
           setdesc(data[0].desc || '');
-          setprice(data[0].price || 0);
+         
           setcat(data[0].category_id || 0);
           setcatName(data[0].categories.name|| '');
       }
@@ -155,7 +155,7 @@ export default function ModalEdit({className, editId,onUpdate}) {
      const handleSendNext=async()=>{
       const {data,error}=await supabase
       .from('meals')
-      .update([{name:name,desc:desc,price:price,category_id:cat}])
+      .update([{name:name,desc:desc,category_id:cat}])
        .eq('id',editId)
 
       if(error){
@@ -163,7 +163,7 @@ export default function ModalEdit({className, editId,onUpdate}) {
       }
       else{
         setcat(0)
-        setprice(0)
+        
         setname('')
         setdesc('')
         onUpdate();
