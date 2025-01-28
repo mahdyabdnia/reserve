@@ -1,15 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useStyles from './styles'
 import classnames from 'classnames'
 import Modal from './Modal/Modal'
+import supabase from '../../../supabaseClient'
 export default function  () {
     const classes=useStyles()
+    const [data, setData] = useState([])
     const openModal=()=>{
        document.getElementsByClassName('modal')[0].style.display="flex"
     }
+    const onCreate=async()=>{
+        const {data,error}=await supabase
+        .from('plan')
+        .select('*')
+        if(error){
+            
+        }
+        else{
+            setData(data);
+        }
+    }
   return (
     <div className={classes.meals_root}> 
-    <Modal className={'modal'}/>
+    <Modal className={'modal'} onCreate={onCreate}/>
     <h1 className={classes.title}>مدیریت  برنامه غذایی</h1>
     <div className={classes.ops_box}>
         <button className={classnames(classes.add_meals,classes.btn)} onClick={openModal}>

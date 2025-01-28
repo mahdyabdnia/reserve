@@ -10,6 +10,8 @@ export default function Modal({ref,className,onCreate}) {
     const [days,setDays]=useState([])
     const [day, setDay] = useState(-1)
     const [dayName, setDayName] = useState('')
+    const [mealid, setMealid] = useState(-1)
+    const [mealName, setMealName] = useState('')
     const [error, setError] = useState('')
     const [name, setname] = useState('')
     const [desc, setdesc] = useState('')
@@ -66,6 +68,11 @@ export default function Modal({ref,className,onCreate}) {
         setcat(c)
         setcatName(d);
           }
+
+      const clickMeal=(c,d)=>{
+        setMealid(c);
+        setMealName();
+      }
 
      useEffect(() => {
          const fetchData=async()=>{
@@ -158,7 +165,7 @@ export default function Modal({ref,className,onCreate}) {
      const handleSendNext=async()=>{
       const {data,error}=await supabase
       .from('meals')
-      .insert([{name:name,desc:desc,price:price,category_id:cat}])
+      .insert([{name:name,meals_id:mealid ,weekday_id:day ,desc:desc,price:price,category_id:cat}])
 
       if(error){
         setError('خطا در ارسال داده')
@@ -166,6 +173,10 @@ export default function Modal({ref,className,onCreate}) {
       else{
         setcat(0)
         setprice(0)
+        setMealid(-1)
+        setMealName('')
+        setDayName('')
+       
         setname('')
         setdesc('')
         onCreate();
@@ -176,14 +187,18 @@ export default function Modal({ref,className,onCreate}) {
 
      const saveSend=async()=>{
       const {error}=await supabase
-      .from('meals')
-      .insert([{name:name,desc:desc,price:price,category_id:cat}])
+      .from('plan')
+      .insert([{name:name,meals_id:mealid ,weekday_id:day ,desc:desc,price:price,category_id:cat}])
       if(error){
         setError('خطا در ارسال داده')
       }
       else{
         setcat(0)
         setprice(0)
+        setMealid(-1)
+        setMealName('')
+        setDayName('')
+       
         setname('')
         setdesc('')
         onCreate();
@@ -269,14 +284,14 @@ export default function Modal({ref,className,onCreate}) {
                      
                      <div className={classes.select_box}>
                       <div className={classes.select} ref={(el)=>(menuRef.current[2]=el)}>
-                        <span> {cat===0 && 'لطفا یک  غذا  را انتخاب کنید'}  {cat!==0 && catName} </span>
+                        <span> {mealid===-1 && 'لطفا یک  غذا  را انتخاب کنید'}  {mealid!==-1 && mealName} </span>
                         <span><Down/></span>
                       </div>
 
                       <div className={classes.option_box} >
                         {meal.map((item)=>{
                           return(
-                            <div className={classes.option} key={item.id} >
+                            <div className={classes.option} key={item.id} onClick={()=>{clickMeal(item.id,item.name)}}>
                               {item.name}
                         </div>
                           )
