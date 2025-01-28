@@ -82,12 +82,19 @@ export default function  () {
                         <tr className={classes.table_row}>
                 
                         <td className={classes.table_body_data}>{index+1}</td>
-                        <td className={classes.table_body_data}>{item.weekday.weekday_name}</td>
+                        <td className={classes.table_body_data}>{item.weekday.day_name}</td>
                         <td className={classes.table_body_data}>{item.categories.name}</td>
                         <td className={classes.table_body_data}>{item.meals.name}</td>
-                        <td className={classes.table_body_data}>{}</td>
-                        <td className={classes.table_body_data}>{}</td>
-                        <td className={classes.table_body_data}>{}</td>
+                        <td className={classes.table_body_data}>{item.desc}</td>
+                        <td className={classes.table_body_data}>{item.time}</td>
+                        <td className={classes.table_body_data}>
+                            <button>
+                                حذف
+                            </button>
+                            <button>
+                                تغییر
+                            </button>
+                        </td>
                        
                         
                     </tr>
