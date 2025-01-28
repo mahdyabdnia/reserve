@@ -4,11 +4,17 @@ import classnames from 'classnames'
 import Modal from './Modal/Modal'
 import supabase from '../../../supabaseClient'
 import { useEffect } from 'react'
+import ModalEdit from './ModalEdit/ModalEdit'
 export default function  () {
     const classes=useStyles()
     const [data, setData] = useState([])
+    const [editId, setEditId] = useState(-1)
     const openModal=()=>{
        document.getElementsByClassName('modal')[0].style.display="flex"
+    }
+    const openEditModal=(id)=>{
+     document.getElementsByClassName('editmodal')[0].style.display="flex"
+     setEditId(id)
     }
     const onCreate=async()=>{
         const {data,error}=await supabase
@@ -41,10 +47,13 @@ export default function  () {
          
       }
     }, [])
+
+    
     
   return (
     <div className={classes.meals_root}> 
     <Modal className={'modal'} onCreate={onCreate}/>
+    <ModalEdit className={'editmodal'} editId={editId} onUpdate={onCreate}/>
     <h1 className={classes.title}>مدیریت  برنامه غذایی</h1>
     <div className={classes.ops_box}>
         <button className={classnames(classes.add_meals,classes.btn)} onClick={openModal}>
@@ -91,7 +100,7 @@ export default function  () {
                             <button>
                                 حذف
                             </button>
-                            <button>
+                            <button onClick={()=>{openEditModal(item.id)}}>
                                 تغییر
                             </button>
                         </td>

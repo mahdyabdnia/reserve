@@ -71,14 +71,14 @@ export default function Modal({ref,className,onCreate}) {
 
       const clickMeal=(c,d)=>{
         setMealid(c);
-        setMealName();
+        setMealName(d);
       }
 
-     useEffect(() => {
+     useEffect(() => {//دریافت اطلاعات مربوط به وعده‌ غدایی
          const fetchData=async()=>{
                  const {data,error}=await supabase
                  .from('categories')
-                 .select('*')
+                 .select('*')  
 
                  if(error){
                   setError('خطا در دریافت داده')
@@ -96,7 +96,7 @@ export default function Modal({ref,className,onCreate}) {
 
 
      useEffect(() => {
-        const fetchData=async ()=>{
+        const fetchData=async ()=>{ // دریافت اطلاعات مربوط به لیست غذاهای مربوط به یک وعده غذایی
           const {data,error}=await supabase
           .from('meals')
           .select('*')
@@ -124,7 +124,7 @@ export default function Modal({ref,className,onCreate}) {
 
 
      useEffect(() => {
-        const fetchData=async()=>{
+        const fetchData=async()=>{  // دریافت لیست روزهای هفته 
            const{data,error}=await supabase
            .from('weekday')
            .select('*')
@@ -162,10 +162,10 @@ export default function Modal({ref,className,onCreate}) {
       }
      }
 
-     const handleSendNext=async()=>{
+     const handleSendNext=async()=>{// ثبت و لیت بعدی
       const {data,error}=await supabase
-      .from('meals')
-      .insert([{name:name,meals_id:mealid ,weekday_id:day ,desc:desc,price:price,category_id:cat}])
+      .from('plan')
+      .insert([{meals_id:mealid ,weekday_id:day ,desc:desc,category_id:cat,time:new Date()}])
 
       if(error){
         setError('خطا در ارسال داده')
@@ -185,12 +185,13 @@ export default function Modal({ref,className,onCreate}) {
        
      }
 
-     const saveSend=async()=>{
+     const saveSend=async()=>{ // ثبت و خروج از فرم
       const {error}=await supabase
       .from('plan')
-      .insert([{name:name,meals_id:mealid ,weekday_id:day ,desc:desc,price:price,category_id:cat}])
+      .insert([{meals_id:mealid ,weekday_id:day ,desc:desc,category_id:cat,time:new Date()}])
       if(error){
         setError('خطا در ارسال داده')
+        console.log(error);
       }
       else{
         setcat(0)
@@ -214,7 +215,7 @@ export default function Modal({ref,className,onCreate}) {
     const closeModal=(event)=>{
     const parent=modalRef.current;
     parent.style.display="none"
-    menuRef.current.style.display="none"
+    
     setcat(0)
     setprice(0)
     setname('')
