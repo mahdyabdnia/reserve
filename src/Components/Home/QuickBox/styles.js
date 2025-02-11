@@ -9,7 +9,7 @@ root:{
     justifyContent:'space-between', 
     rowGap:'5vh',
     flexWrap:'wrap',
-  height:'0px',
+  height:'300px',
   overflow:'hidden',
   transition:'1s height',
     
