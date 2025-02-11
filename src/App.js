@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { BrowserRouter  ,Routes,Route } from 'react-router-dom'
+import { BrowserRouter  ,Routes,Route , Navigate} from 'react-router-dom'
 import Layout from './Components/Layout/Layout'
 import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
