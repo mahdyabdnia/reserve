@@ -9,10 +9,10 @@ export default function Home() {
   const notifRef = useRef(null)
   const notifBoxRef=useRef(null)
   const drawerRef = useRef(null)
-  const openDrawer = (event, index) => {
+  const openDrawer = () => {
     console.log('Clicked index:', index);
-    const drawers = document.getElementsByClassName('drawer');
-    const drawer = drawers[index];
+    const drawer = document.getElementsByClassName('drawer')[0];
+ 
 
     if (drawer) {
         console.log('Current height:', drawer.style.height);
@@ -41,11 +41,10 @@ export default function Home() {
   }
   return (
     <div className={classes.root}> 
-    <h2 className={classes.header} onClick={(e)=>{openDrawer(e,0)}}>دسترسی سریع</h2>
+    <h2 className={classes.header} onClick={openDrawer}>دسترسی سریع</h2>
    
        <QuickBox className={'drawer'}/>
-       <h2 className={classes.header} onClick={(e)=>{openDrawer(e,1)}}>   اطلاعیه‌ها </h2>  
-       <NewsBox className={'drawer'}/>
+     
 
     </div>
   )
