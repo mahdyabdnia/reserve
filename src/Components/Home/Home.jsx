@@ -10,7 +10,7 @@ export default function Home() {
   const notifBoxRef=useRef(null)
   const drawerRef = useRef(null)
   const openDrawer = () => {
-    console.log('Clicked index:', index);
+ 
     const drawer = document.getElementsByClassName('drawer')[0];
  
 
@@ -22,9 +22,7 @@ export default function Home() {
         } else {
             drawer.style.height = '0'; // بستن دراور
         }
-    } else {
-        console.error('Drawer not found for index:', index);
-    }
+    } 
 };
     
   
