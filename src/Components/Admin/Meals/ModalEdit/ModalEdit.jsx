@@ -50,7 +50,24 @@ export default function ModalEdit({className, editId,onUpdate}) {
        }
      }, [ ])
      
-
+    useEffect(() => {//////days fetching
+      const fetchData=async ()=>{
+        const {data,error}=await supabase
+        .from('weekday')
+        .select('*')
+        if(error){
+          console.log(error)
+        }
+        else{
+          setDays(data)
+        }
+      }
+    fetchData();
+      return () => {
+         
+      }
+    }, [])
+    
      const clickMenu=(c,d)=>{
       setcat(c);
       setcatName(d)
@@ -82,16 +99,20 @@ export default function ModalEdit({className, editId,onUpdate}) {
          const fetchData=async()=>{
             const{data,error}=await supabase
             .from('plan')
-            .select('*,meals(*),categories(*),weekday(*)')
+            .select('*,weekday(*),meals(*),categories(*)')
             .eq('id',editId)
             if(error){
               console.log(error)
             }
             else{
               setData(data)
+              console.log(data)
             }
-         }
-        fetchData()
+            if (editId) {
+              fetchData();
+          } else {
+              setError('ID مورد نظر مشخص نشده است');
+          }}
          return () => {
            
          }
@@ -99,13 +120,13 @@ export default function ModalEdit({className, editId,onUpdate}) {
 
        useEffect(() => {
           if(data && data.length>0){
-            setdayName(data[0].weekday.day_name)
-            setMealName(data[0].meals.name)
-            setdesc(data[0].desc)
-            setcatName(data[0].categories.name)
-            setday(data[0].weekday.id)
-            setcat(data[0].categories.id)
-            setMealid(data[0].meals.id)
+             
+            setMealName(data[0].meals.name || '')
+            setdesc(data[0].desc || '')
+            setcatName(data[0].categories.name || '')
+            
+            setcat(data[0].categories.id || -1)
+            setMealid(data[0].meals.id || -1)
           }
        
          return () => {
@@ -197,12 +218,12 @@ export default function ModalEdit({className, editId,onUpdate}) {
                       </div>
 
                       <div className={classes.option_box} >
-                        {categories.map((item)=>{
+                        {days.map((item)=>{
                           return(
                             <div className={classes.option} key={item.id} onClick={()=>{
-                              clickMenu(item.id,item.name)
+                               
                             }}>
-                              {item.name}
+                              {item.day_name}
                         </div>
                           )
                         })}

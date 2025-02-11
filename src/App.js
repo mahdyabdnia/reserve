@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { BrowserRouter  ,Routes,Route } from 'react-router-dom'
 import Layout from './Components/Layout/Layout'
 import Home from './Components/Home/Home'
@@ -9,6 +9,7 @@ import Food from './Components/Admin/Foods/Food'
 import Manage from './Components/Admin/Manage/Manage'
 import Meals from './Components/Admin/Meals/Meals'
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   return (
       
    <BrowserRouter>
@@ -17,8 +18,11 @@ export default function App() {
    
   <Routes>
     <Route  path=""  element={<Layout/>}>
-       <Route path="/" element={<Home/>}/>
-       <Route index path="/login" element={<Login/>}/>
+       <Route path="/home" element={<Home/>}/>
+       <Route path="/" element={
+          isLoggedIn ? <Home /> : <Navigate to="/login" replace />
+        }/>
+       <Route index path="/login" element={<Login  onLogin={() => setIsLoggedIn(true)} />}/>
        <Route path='/reserve' element={<ReservePage/>} />
        <Route path='/del' element={<DelFood/>}/>
         <Route path='/admin' element={<Manage/>}>

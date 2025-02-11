@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Eye } from 'react-feather';
 import supabase from '../../supabaseClient';
 
-export default function Login() {
+export default function Login({onLogin}) {
     const classes = useStyles();
     const navigate = useNavigate();
     const eyeRef = useRef(null);
@@ -42,6 +42,7 @@ export default function Login() {
                 // اگر کاربر وجود داشت و پسورد صحیح بود
                 console.log('Login successful!');
                 navigate('/');
+                onLogin();
             }
         } else {
             setMessage('لطفا نام کاربری و گذرواژه را وارد کنید');
