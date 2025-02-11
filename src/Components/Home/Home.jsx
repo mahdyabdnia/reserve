@@ -13,16 +13,15 @@ export default function Home() {
  
     const drawer = document.getElementsByClassName('drawer')[0];
  
-
-    if (drawer) {
-        console.log('Current height:', drawer.style.height);
+ 
+     
         if (drawer.style.height === '0px' ) {
             const contentHeight = '300px';
             drawer.style.height = contentHeight; // باز کردن دراور
         } else {
             drawer.style.height = '0'; // بستن دراور
         }
-    } 
+   
 };
     
   
