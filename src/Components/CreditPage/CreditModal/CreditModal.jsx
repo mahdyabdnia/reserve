@@ -4,6 +4,10 @@ import { Close } from '../../Icons/Icons';
 import classnames from 'classnames'
 export default function CreditModal({className}) {
     const classes=useStyles();
+    const [option,setOption]=useState('')
+    const handleOptionChange=(event)=>{
+    setOption(event.target.value);
+    }
     const handleChange = (e) => {
       const inputValue = e.target.value;
       // فقط اعداد را بپذیرید
@@ -50,12 +54,21 @@ export default function CreditModal({className}) {
         <div className={classes.portal_select}>
           <div className={classes.portal}>
             <img src="images/zarinpal.png" alt="" className={classes.portal_img}/>
-          <input type="radio" />
+          <input type="radio" 
+          value='option1'
+          onChange={(e)=>{handleOptionChange(e)}}
+          checked={option==='option1'}
+           
+          
+          />
           </div>
 
           <div className={classes.portal}>
             <img src="images/melat.png" alt=""  className={classes.portal_img}/>
-          <input type="radio" />
+          <input type="radio"
+           value='option2'
+           onChange={(e)=>{handleOptionChange(e)}}
+           checked={option==='option2'} />
           </div>
         </div>
        </div>

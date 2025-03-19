@@ -1,0 +1,46 @@
+{
+    "name": "React Dev Container",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          // ==== React Core ====
+          "dsznajder.es7-react-js-snippets", // React/Redux Snippets
+          "xabikos.ReactSnippets", // React Snippets جایگزین
+  
+          // ==== HTML/CSS/JS Tools ====
+          "formulahendry.auto-close-tag", // Auto Close Tag
+          "formulahendry.auto-rename-tag", // Auto Rename Tag
+          "ecmel.vscode-html-css", // HTML/CSS Support
+          "zignd.html-css-class-completion", // CSS Class Completion
+  
+          // ==== JavaScript/TypeScript ====
+          "dbaeumer.vscode-eslint", // ESLint
+          "esbenp.prettier-vscode", // Prettier
+          "rvest.vs-code-prettier-eslint", // Prettier + ESLint Integration
+          "ms-vscode.vscode-typescript-next", // TypeScript
+  
+          // ==== Styling ====
+          "stylelint.vscode-stylelint", // CSS/SCSS Lint
+          "bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense
+  
+          // ==== Productivity ====
+          "GitHub.copilot", // GitHub Copilot (اختیاری)
+          "eamodio.gitlens", // Git History
+          "usernamehw.errorlens", // Error Lens (نمایش خطاها در خط)
+          
+          // ==== Snippets ====
+          "abusaidm.html-snippets", // HTML Snippets
+          "donjayamanne.jquerysnippets", // jQuery/JS Snippets
+          "xabikos.JavaScriptSnippets" // JS Snippets
+        ]
+      }
+    },
+    "postCreateCommand": "npm install",
+    "settings": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2,
+      "javascript.preferences.quoteStyle": "single",
+      "typescript.preferences.quoteStyle": "single"
+    }
+  }
