@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { BrowserRouter  ,Routes,Route , Navigate} from 'react-router-dom'
 import Layout from './Components/Layout/Layout'
 import Home from './Components/Home/Home'
@@ -10,6 +10,8 @@ import Manage from './Components/Admin/Manage/Manage'
 import Meals from './Components/Admin/Meals/Meals'
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+   
+  
   return (
       
    <BrowserRouter>

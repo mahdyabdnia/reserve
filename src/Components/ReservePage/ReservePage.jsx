@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import ReserveCard from './ReserveCard/ReserveCard';
 import TimeBar from './TimeBar/TimeBar';
 import { useNavigate } from 'react-router-dom';
-import CreditModal from '../CreditPage/CreditModal/CreditModal';
+import CreditModal from '../CreditPage/CreditModal/CreditModal'; 
 import supabase from '../../supabaseClient'; // مطمئن شوید که این ایمپورت درست است
 
 export default function ReservePage() {

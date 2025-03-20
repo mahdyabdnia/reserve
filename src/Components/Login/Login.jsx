@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Eye } from 'react-feather';
 import supabase from '../../supabaseClient';
 
-export default function Login({onLogin}) {
+export default function Login({ onLogin }) {
     const classes = useStyles();
     const navigate = useNavigate();
     const eyeRef = useRef(null);
@@ -19,10 +19,10 @@ export default function Login({onLogin}) {
             console.log('Trying to log in...');
 
             const { data, error } = await supabase
-                .from('users') // نام جدول کاربران
-                .select('*') // تمام رکوردها را دریافت کنید
-                .eq('username', username) // جستجو بر اساس نام کاربری
-                .single(); // فقط یک رکورد را برمی‌گرداند
+                .from('users')
+                .select('*')
+                .eq('username', username)
+                .single();
 
             if (error) {
                 console.error('Error fetching user:', error.message);
@@ -33,13 +33,45 @@ export default function Login({onLogin}) {
             console.log('User data:', data);
 
             if (!data) {
-                // اگر کاربر وجود نداشت
                 setMessage('کاربری با این نام کاربری وجود ندارد');
             } else if (data.password !== password) {
-                // بررسی پسورد
                 setMessage('گذرواژه نادرست است');
             } else {
-                // اگر کاربر وجود داشت و پسورد صحیح بود
+                console.log('Login successful!');
+                navigate('/');
+                onLogin();
+                localStorage.setItem('authToken','auth is successful')
+            }
+        } else {
+            setMessage('لطفا نام کاربری و گذرواژه را وارد کنید');
+        }
+    };
+
+    const handleKeyDown=async(e)=>{
+      if(e.key==='enter'){
+      e.preventDefault();
+       if (username !== '' && password !== '') {
+            console.log('Trying to log in...');
+
+            const { data, error } = await supabase
+                .from('users')
+                .select('*')
+                .eq('username', username)
+                .single();
+
+            if (error) {
+                console.error('Error fetching user:', error.message);
+                setMessage('خطا در بارگذاری اطلاعات کاربران');
+                return;
+            }
+
+            console.log('User data:', data);
+
+            if (!data) {
+                setMessage('کاربری با این نام کاربری وجود ندارد');
+            } else if (data.password !== password) {
+                setMessage('گذرواژه نادرست است');
+            } else {
                 console.log('Login successful!');
                 navigate('/');
                 onLogin();
@@ -47,23 +79,24 @@ export default function Login({onLogin}) {
         } else {
             setMessage('لطفا نام کاربری و گذرواژه را وارد کنید');
         }
-    };
+      
+    }
+    }
 
-    const controlForm = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        login();
     };
 
     useEffect(() => {
         const input = passRef.current;
-        return () => {
-            input.type = show ? "text" : "password";
-        };
+        input.type = show ? "text" : "password";
     }, [show]);
 
     return (
         <div className={classes.login_root}>
             <div className={classes.login_page}>
-                <form action="" className={classes.form_box} onSubmit={controlForm}>
+                <form action="" className={classes.form_box} onSubmit={handleSubmit}>
                     <div className={classes.form_control}>
                         <label htmlFor="" className={classes.form_label}> شماره دانشجویی </label>
                         <div className={classes.form_card}>
@@ -90,13 +123,20 @@ export default function Login({onLogin}) {
                                 required
                                 onChange={(e) => { setPassword(e.target.value); }}
                             />
-                            <button className={classes.eye_btn} ref={eyeRef} onClick={() => { setShow(!show); }}><Eye /></button>
+                            <button
+                                type="button"
+                                className={classes.eye_btn}
+                                ref={eyeRef}
+                                onClick={() => { setShow(!show); }}
+                            >
+                                <Eye />
+                            </button>
                         </div>
                     </div>
-                    <input type="submit" value="ورود" className={classes.form_submit} onClick={login} />
+                    <input type="submit" value="ورود" className={classes.form_submit} onKeyDown={handleKeyDown}/>
                     <div className={classes.form_change_btn}>{message}</div>
                 </form>
             </div>
         </div>
     );
-    }
+}
